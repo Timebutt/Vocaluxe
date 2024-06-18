@@ -129,6 +129,7 @@ namespace Vocaluxe.Base
             _SongQueue.Reset();
         }
 
+// Dit lijkt wel de start ofzo te zijn
         public static void Start()
         {
             _SongQueue.Start(Players);

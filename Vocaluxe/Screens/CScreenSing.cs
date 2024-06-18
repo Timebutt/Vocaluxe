@@ -34,6 +34,8 @@ using VocaluxeLib.Menu.SingNotes;
 using VocaluxeLib.PartyModes;
 using VocaluxeLib.Songs;
 
+// Ik denk da dat hier het scherm waar daje zingt is
+
 namespace Vocaluxe.Screens
 {
     public class CScreenSing : CMenu
@@ -150,6 +152,8 @@ namespace Vocaluxe.Screens
         public override void Init()
         {
             base.Init();
+
+            Console.WriteLine("EERSTE OUTPUT EVER!");
 
             var texts = new List<string> { _TextShortInfoTop, _TextSongName, _TextTime, _TextDuetName1, _TextDuetName2, _TextMedleyCountdown };
             _BuildTextStrings(texts);
@@ -408,6 +412,7 @@ namespace Vocaluxe.Screens
         #region screen-handling
         public override void OnShow()
         {
+            // ik denk da hier de loop is!
             base.OnShow();
 
             _InitiatePlayerStatics();

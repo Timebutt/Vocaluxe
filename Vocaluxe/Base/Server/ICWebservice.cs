@@ -20,6 +20,8 @@ using System.IO;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 
+// Hier zijn de endpoints
+
 namespace Vocaluxe.Base.Server
 {
     [ServiceContract]

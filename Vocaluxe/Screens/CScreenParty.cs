@@ -200,6 +200,8 @@ namespace Vocaluxe.Screens
                 return;
             }
 
+            // I think we can add what we need here!
+
             CParty.SetPartyMode(_PartyModeInfos[index].ExtInfo.ID);
             CGraphics.FadeTo(CParty.GetStartScreen());
         }
