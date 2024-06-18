@@ -129,6 +129,8 @@ namespace VocaluxeLib.Songs
         public string TitleSorting = String.Empty;
         public string ArtistSorting = String.Empty;
 
+        public string MidiNote = "";
+
         public string Creator = "";
         public string Version = "";
         public string Length = ""; //Length set in song file, SHOULD match actual song length but is more a hint
@@ -241,6 +243,8 @@ namespace VocaluxeLib.Songs
             Title = song.Title;
             ArtistSorting = song.ArtistSorting;
             TitleSorting = song.TitleSorting;
+
+            MidiNote = song.MidiNote;
 
             Creator = song.Creator;
             Version = song.Version;

@@ -125,7 +125,7 @@
     <MicDelay>200</MicDelay>
   </Record>
   <Server>
-    <ServerActive>TR_CONFIG_OFF</ServerActive>
+    <ServerActive>TR_CONFIG_ON</ServerActive>
     <ServerEncryption>TR_CONFIG_OFF</ServerEncryption>
     <ServerPort>3000</ServerPort>
     <SongCountCoverThreshold>70</SongCountCoverThreshold>
