@@ -24,6 +24,7 @@ using VocaluxeLib.Draw;
 using VocaluxeLib.Menu;
 using VocaluxeLib.Songs;
 using VocaluxeLib.Profile;
+using NAudio.Midi;
 
 namespace Vocaluxe.Screens
 {
@@ -629,12 +630,42 @@ namespace Vocaluxe.Screens
 
         private void _StartSong()
         {
+            // Hier start de song effectief!
             if (CGame.GetNumSongs() == 1 && CGame.GetSong(0).IsDuet)
             {
                 for (int i = 0; i < CGame.NumPlayers; i++)
                     CGame.Players[i].VoiceNr = _SelectSlides[_SelectSlideDuetPlayer[i]].Selection;
             }
             CGraphics.FadeTo(EScreen.Sing);
+
+            
+
+            // Output a MIDI note on every single MIDI interface available cause why not!
+            for (int device = 0; device < MidiOut.NumberOfDevices; device++)
+            {
+                using (var midiOut = new MidiOut(device))
+                {
+                    try
+                    {
+                        // Send the song specific note (if there is one!)
+                    int midiNote = Int32.Parse(CGame.GetSong(0).MidiNote);
+
+                    // Send a Note On message (Note On, Channel 1, Note number 60 (Middle C), Velocity 127)
+                    midiOut.Send(MidiMessage.StartNote(midiNote, 127, 1).RawData);
+                    midiOut.Send(MidiMessage.StopNote(midiNote, 0, 1).RawData);
+                    }
+                    catch (FormatException)
+                    {
+                        midiOut.Send(MidiMessage.StartNote(0, 127, 1).RawData);
+                        midiOut.Send(MidiMessage.StopNote(0, 0, 1).RawData);
+                    }
+                    
+
+                    // Send the 'general song started' MIDI note
+                    midiOut.Send(MidiMessage.StartNote(127, 127, 1).RawData);
+                    midiOut.Send(MidiMessage.StopNote(127, 0, 1).RawData);
+                }
+            }
         }
 
         private void _UpdateSlides()

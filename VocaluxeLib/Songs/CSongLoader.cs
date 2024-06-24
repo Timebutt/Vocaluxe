@@ -162,6 +162,10 @@ namespace VocaluxeLib.Songs
                             case "ARTIST-ON-SORTING":
                                 _Song.ArtistSorting = value;
                                 break;
+                            case "MIDI-NOTE":
+                            case "MIDINOTE":
+                                _Song.MidiNote = value;
+                                break;
                             case "CREATOR":
                             case "AUTHOR":
                             case "AUTOR":

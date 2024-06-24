@@ -10,13 +10,13 @@
 				<B>0.00</B>
 				<A>0.70</A>
 			</OutlineColor>
-			<Folder>FranklinkGothic</Folder>
-			<FileNormal>FranklinkGothicBook.ttf</FileNormal>
-			<FileBold>FranklinkGothicBoldHeavy.ttf</FileBold>
+			<Folder>FranklinGothic</Folder>
+			<FileNormal>FranklinGothicBook.ttf</FileNormal>
+			<FileBold>FranklinGothicHeavy.ttf</FileBold>
 			<!-- we don't have an italic font yet -->
-			<FileItalic>FranklinkGothicBook.ttf</FileItalic>
+			<FileItalic>FranklinGothicBook.ttf</FileItalic>
 			<!-- we don't have an italic and bold font yet -->
-			<FileBoldItalic>FranklinkGothicBook.ttf</FileBoldItalic>
+			<FileBoldItalic>FranklinGothicBook.ttf</FileBoldItalic>
 		</Font1>
 		<Font2>
 			<Name>Outline</Name>
@@ -27,13 +27,13 @@
 				<B>0.00</B>
 				<A>0.70</A>
 			</OutlineColor>
-			<Folder>FranklinkGothic</Folder>
-			<FileNormal>FranklinkGothicBook.ttf</FileNormal>
-			<FileBold>FranklinkGothicBoldHeavy.ttf</FileBold>
+			<Folder>FranklinGothic</Folder>
+			<FileNormal>FranklinGothicBook.ttf</FileNormal>
+			<FileBold>FranklinGothicHeavy.ttf</FileBold>
 			<!-- we don't have an italic font yet -->
-			<FileItalic>FranklinkGothicBook.ttf</FileItalic>
+			<FileItalic>FranklinGothicBook.ttf</FileItalic>
 			<!-- we don't have an italic and bold font yet -->
-			<FileBoldItalic>FranklinkGothicBook.ttf</FileBoldItalic>
+			<FileBoldItalic>FranklinGothicBook.ttf</FileBoldItalic>
 		</Font2>
 	</Fonts>
 </root>
