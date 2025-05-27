@@ -35,9 +35,9 @@
       <Color Name="BackgroundColorAlpha" />
       <Rect>
         <X>0</X>
-        <Y>915</Y>
+        <Y>450</Y>
         <W>1920</W>
-        <H>135</H>
+        <H>179</H>
         <Z>-0.75</Z>
       </Rect>
     </Static>
@@ -46,9 +46,9 @@
       <Color Name="BackgroundColorAlpha" />
       <Rect>
         <X>0</X>
-        <Y>915</Y>
+        <Y>450</Y>
         <W>1920</W>
-        <H>135</H>
+        <H>179</H>
         <Z>-0.75</Z>
       </Rect>
     </Static>
@@ -59,7 +59,7 @@
         <X>0</X>
         <Y>0</Y>
         <W>1920</W>
-        <H>135</H>
+        <H>179</H>
         <Z>-0.75</Z>
       </Rect>
     </Static>
@@ -125,7 +125,7 @@
       <Color Name="LyricHelper" />
       <Rect>
         <X>60</X>
-        <Y>935</Y>
+        <Y>480</Y>
         <W>68</W>
         <H>54</H>
         <Z>-1</Z>
@@ -136,7 +136,7 @@
       <Color Name="LyricHelperDuet" />
       <Rect>
         <X>60</X>
-        <Y>935</Y>
+        <Y>480</Y>
         <W>68</W>
         <H>54</H>
         <Z>-1</Z>
@@ -180,7 +180,7 @@
       <Color Name="StaticAvatarColor" />
       <Rect>
         <X>60</X>
-        <Y>528</Y>
+        <Y>-200</Y>
         <W>75</W>
         <H>75</H>
         <Z>-0.75</Z>
@@ -202,7 +202,7 @@
       <Color Name="StaticAvatarColor" />
       <Rect>
         <X>60</X>
-        <Y>168</Y>
+        <Y>-200</Y>
         <W>75</W>
         <H>75</H>
         <Z>-0.75</Z>
@@ -225,7 +225,7 @@
       <Color Name="StaticAvatarColor" />
       <Rect>
         <X>60</X>
-        <Y>558</Y>
+        <Y>-200</Y>
         <W>75</W>
         <H>75</H>
         <Z>-0.75</Z>
@@ -749,7 +749,7 @@
       <Text /></Text>
     <Text Name="TextScoreP1N1">
       <X>1860</X>
-      <Y>506</Y>
+      <Y>310</Y>
       <Z>-1</Z>
       <H>120</H>
       <MaxW>0</MaxW>
@@ -764,7 +764,7 @@
       <Text /></Text>
     <Text Name="TextNameP1N1">
       <X>158</X>
-      <Y>540</Y>
+      <Y>-200</Y>
       <Z>-1</Z>
       <H>57</H>
       <MaxW>950</MaxW>
@@ -777,7 +777,7 @@
       <Text /></Text>
     <Text Name="TextScoreP1N2">
       <X>1860</X>
-      <Y>146</Y>
+      <Y>310</Y>
       <Z>-1</Z>
       <H>120</H>
       <MaxW>0</MaxW>
@@ -792,7 +792,7 @@
       <Text /></Text>
     <Text Name="TextNameP1N2">
       <X>158</X>
-      <Y>180</Y>
+      <Y>-200</Y>
       <Z>-1</Z>
       <H>57</H>
       <MaxW>950</MaxW>
@@ -805,7 +805,7 @@
       <Text /></Text>
     <Text Name="TextScoreP2N2">
       <X>1860</X>
-      <Y>536</Y>
+      <Y>630</Y>
       <Z>-1</Z>
       <H>120</H>
       <MaxW>0</MaxW>
@@ -820,7 +820,7 @@
       <Text /></Text>
     <Text Name="TextNameP2N2">
       <X>158</X>
-      <Y>570</Y>
+      <Y>-200</Y>
       <Z>-1</Z>
       <H>57</H>
       <MaxW>950</MaxW>
@@ -1518,9 +1518,9 @@
     <Lyric Name="LyricMain">
       <Rect>
         <X>956</X>
-        <Y>930</Y>
+        <Y>465</Y>
         <W>1800</W>
-        <H>63</H>
+        <H>85</H>
         <Z>-1</Z>
       </Rect>
       <Color Name="LyricMainColor" />
@@ -1529,7 +1529,7 @@
     <Lyric Name="LyricSub">
       <Rect>
         <X>956</X>
-        <Y>993</Y>
+        <Y>535</Y>
         <W>1800</W>
         <H>53</H>
         <Z>-1</Z>
@@ -1540,9 +1540,9 @@
     <Lyric Name="LyricMainDuet">
       <Rect>
         <X>956</X>
-        <Y>930</Y>
+        <Y>465</Y>
         <W>1800</W>
-        <H>63</H>
+        <H>85</H>
         <Z>-1</Z>
       </Rect>
       <Color Name="LyricMainColor"/>
@@ -1551,7 +1551,7 @@
     <Lyric Name="LyricSubDuet">
       <Rect>
         <X>956</X>
-        <Y>993</Y>
+        <Y>535</Y>
         <W>1800</W>
         <H>53</H>
         <Z>-1</Z>
@@ -1610,7 +1610,7 @@
         <Position Name="P1N1">
           <Rect>
             <X>60</X>
-            <Y>615</Y>
+            <Y>60</Y>
             <W>1800</W>
             <H>270</H>
             <Z>-1.5</Z>
@@ -1619,7 +1619,7 @@
         <Position Name="P1N2">
           <Rect>
             <X>60</X>
-            <Y>255</Y>
+            <Y>80</Y>
             <W>1800</W>
             <H>240</H>
             <Z>-1.5</Z>
@@ -1628,7 +1628,7 @@
         <Position Name="P2N2">
           <Rect>
             <X>60</X>
-            <Y>645</Y>
+            <Y>620</Y>
             <W>1800</W>
             <H>240</H>
             <Z>-1.5</Z>
@@ -1816,8 +1816,8 @@
       <AnimateMovement>TR_CONFIG_ON</AnimateMovement>
       <AnimateColoring>TR_CONFIG_ON</AnimateColoring>
       <Rect>
-        <X>1658</X>
-        <Y>615</Y>
+        <X>1630</X>
+        <Y>410</Y>
         <W>210</W>
         <H>20</H>
         <Z>-0.75</Z>
@@ -1861,8 +1861,8 @@
       <AnimateMovement>TR_CONFIG_ON</AnimateMovement>
       <AnimateColoring>TR_CONFIG_ON</AnimateColoring>
       <Rect>
-        <X>1658</X>
-        <Y>255</Y>
+        <X>1630</X>
+        <Y>410</Y>
         <W>210</W>
         <H>20</H>
         <Z>-0.75</Z>
@@ -1906,8 +1906,8 @@
       <AnimateMovement>TR_CONFIG_ON</AnimateMovement>
       <AnimateColoring>TR_CONFIG_ON</AnimateColoring>
       <Rect>
-        <X>1658</X>
-        <Y>645</Y>
+        <X>1630</X>
+        <Y>740</Y>
         <W>210</W>
         <H>20</H>
         <Z>-0.75</Z>

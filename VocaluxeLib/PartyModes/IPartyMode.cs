@@ -125,7 +125,7 @@ namespace VocaluxeLib.PartyModes
 
         void JokerUsed(int teamNr);
         void SongSelected(int songID);
-        void FinishedSinging();
+        void FinishedSinging(bool abortedSong);
         void LeavingScore();
         void LeavingHighscore();
     }

@@ -15,12 +15,12 @@
     <SaveModifiedSongs>TR_CONFIG_OFF</SaveModifiedSongs>
   </Debug>
   <Graphics>
-    <Renderer>TR_CONFIG_DIRECT3D</Renderer>
-    <TextureQuality>TR_CONFIG_TEXTURE_MEDIUM</TextureQuality>
+    <Renderer>TR_CONFIG_OPENGL</Renderer>
+    <TextureQuality>TR_CONFIG_TEXTURE_HIGHEST</TextureQuality>
     <CoverSize>256</CoverSize>
     <NumScreens>1</NumScreens>
-    <ScreenW>1024</ScreenW>
-    <ScreenH>576</ScreenH>
+    <ScreenW>1920</ScreenW>
+    <ScreenH>1080</ScreenH>
     <ScreenAlignment>Middle</ScreenAlignment>
     <BorderLeft>0</BorderLeft>
     <BorderRight>0</BorderRight>

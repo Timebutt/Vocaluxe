@@ -160,11 +160,11 @@
   <string name="TR_SCREENSONG_SORTING">Sorting: %s</string>
   <string name="TR_SCREENSONG_NOMEDLEY">No Medley for this song!</string>
   <string name="TR_SCREENSING_PAUSE">Pause</string>
-  <string name="TR_SCREENSING_BUTTON_CANCEL">Stop singing</string>
+  <string name="TR_SCREENSING_BUTTON_CANCEL">Stop</string>
   <string name="TR_SCREENSING_BUTTON_CONTINUE">Continue</string>
   <string name="TR_SCREENSING_BUTTON_SKIP">Skip this song</string>
   <string name="TR_SCREENSING_BUTTON_RESTART_ROUND">Restart round</string>
-  <string name="TR_SCREENSING_BUTTON_RESTART_GAME">Restart game</string>
+  <string name="TR_SCREENSING_BUTTON_RESTART_GAME">Restart</string>
   <string name="TR_SCREENSING_NOMORESONGS">No more songs in playlist!</string>
   <string name="TR_SCREENSING_NOWEBCAM">No webcam available!</string>
   <string name="TR_SCREENSING_ASPECTRATIO">Aspect Ratio: %a</string>
@@ -205,6 +205,7 @@
   <string name="TR_SCREENOGAME_DIFFICULTY">Game difficulty</string>
   <string name="TR_SCREENOGAME_TIMERMODE">Timer mode</string>
   <string name="TR_SCREENOGAME_HIGHSCORESTYLE">Highscore style</string>
+  <string name="TR_SCREENOGAME_MIDI_INTERFACE">MIDI output device</string>
   <string name="TR_SCREENORECORD_OPTIONS">Record Options</string>
   <string name="TR_SCREENORECORD_DEVICE">Device</string>
   <string name="TR_SCREENORECORD_INPUT">Input</string>

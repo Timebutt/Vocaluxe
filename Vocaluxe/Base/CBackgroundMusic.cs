@@ -184,6 +184,9 @@ namespace Vocaluxe.Base
 
         public static void Play()
         {
+            // No background music!
+            return;
+
             if (!IsPlayingPreview && CConfig.Config.Sound.BackgroundMusic != EBackgroundMusicOffOn.TR_CONFIG_ON)
                 return;
 

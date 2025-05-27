@@ -25,6 +25,8 @@ using VocaluxeLib;
 using VocaluxeLib.Game;
 using VocaluxeLib.Menu;
 using VocaluxeLib.Songs;
+using Vocaluxe.Lib.Midi;
+using System.Threading.Tasks;
 
 namespace Vocaluxe.Screens
 {
@@ -252,6 +254,9 @@ namespace Vocaluxe.Screens
 
         private void _UpdateRatings()
         {
+            // This switches the view immediately to the Angular app!
+            CMidiInterface.sendStopNote();
+
             CSong song = null;
             var players = new SPlayer[CGame.NumPlayers];
             if (_Round >= 0)
@@ -316,6 +321,12 @@ namespace Vocaluxe.Screens
                 if (CProfiles.IsProfileIDValid(players[p].ProfileID))
                     _Statics[_StaticAvatar[p, CGame.NumPlayers - 1]].Texture = CProfiles.GetAvatarTextureFromProfile(players[p].ProfileID);
             }
+
+
+            for (int i = 0; i < players.Length; i++) {
+                CMidiInterface.sendScore(players[i].Points);
+            }
+            CMidiInterface.finalizeScore();
         }
 
         private void _SetVisibility()

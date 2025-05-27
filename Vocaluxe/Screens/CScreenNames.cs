@@ -25,6 +25,7 @@ using VocaluxeLib.Menu;
 using VocaluxeLib.Songs;
 using VocaluxeLib.Profile;
 using NAudio.Midi;
+using Vocaluxe.Lib.Midi;
 
 namespace Vocaluxe.Screens
 {
@@ -112,6 +113,9 @@ namespace Vocaluxe.Screens
             _ChooseAvatarStatic.Aspect = EAspect.Crop;
 
             CProfiles.AddProfileChangedCallback(_OnProfileChanged);
+
+            CMidiInterface.MidiIn.MessageReceived += MidiIn_MessageReceived;
+            CMidiInterface.MidiIn.Start();
         }
 
         public override void LoadTheme(string xmlPath)
@@ -124,6 +128,20 @@ namespace Vocaluxe.Screens
                 _Statics[_StaticPlayerAvatar[i]].Aspect = EAspect.Crop;
             }
             _AddStatic(_ChooseAvatarStatic);
+        }
+
+        private void MidiIn_MessageReceived(object sender, MidiInMessageEventArgs e)
+        {
+            var midiEvent = e.MidiEvent;
+            if (midiEvent.CommandCode == MidiCommandCode.NoteOn)
+            {
+                var noteEvent = (NoteEvent)midiEvent;
+                if(noteEvent.NoteNumber == 30)
+                {
+                    _StartSong();
+                }
+            }
+            
         }
 
         public override bool HandleInput(SKeyEvent keyEvent)
@@ -637,35 +655,13 @@ namespace Vocaluxe.Screens
                     CGame.Players[i].VoiceNr = _SelectSlides[_SelectSlideDuetPlayer[i]].Selection;
             }
             CGraphics.FadeTo(EScreen.Sing);
-
             
-
-            // Output a MIDI note on every single MIDI interface available cause why not!
-            for (int device = 0; device < MidiOut.NumberOfDevices; device++)
-            {
-                using (var midiOut = new MidiOut(device))
-                {
-                    try
-                    {
-                        // Send the song specific note (if there is one!)
-                    int midiNote = Int32.Parse(CGame.GetSong(0).MidiNote);
-
-                    // Send a Note On message (Note On, Channel 1, Note number 60 (Middle C), Velocity 127)
-                    midiOut.Send(MidiMessage.StartNote(midiNote, 127, 1).RawData);
-                    midiOut.Send(MidiMessage.StopNote(midiNote, 0, 1).RawData);
-                    }
-                    catch (FormatException)
-                    {
-                        midiOut.Send(MidiMessage.StartNote(0, 127, 1).RawData);
-                        midiOut.Send(MidiMessage.StopNote(0, 0, 1).RawData);
-                    }
-                    
-
-                    // Send the 'general song started' MIDI note
-                    midiOut.Send(MidiMessage.StartNote(127, 127, 1).RawData);
-                    midiOut.Send(MidiMessage.StopNote(127, 0, 1).RawData);
-                }
-            }
+            // try
+            // {
+            //     // Send the song specific note (if there is one!)
+            //     int midiNote = Int32.Parse(CGame.GetSong(0).MidiNote);
+            //     CMidiInterface.sendMidiNote(midiNote);
+            // } catch {}
         }
 
         private void _UpdateSlides()
