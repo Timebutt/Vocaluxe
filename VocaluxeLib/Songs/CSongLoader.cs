@@ -164,7 +164,11 @@ namespace VocaluxeLib.Songs
                                 break;
                             case "MIDI-NOTE":
                             case "MIDINOTE":
-                                _Song.MidiNote = value;
+                                try
+                                {
+                                    _Song.MidiNote = int.Parse(value);
+                                }
+                                catch {}
                                 break;
                             case "CREATOR":
                             case "AUTHOR":

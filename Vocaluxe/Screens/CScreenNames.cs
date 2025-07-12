@@ -46,6 +46,7 @@ namespace Vocaluxe.Screens
         private const string _ButtonBack = "ButtonBack";
         private const string _ButtonStart = "ButtonStart";
         private const string _TextWarningMics = "TextWarningMics";
+        private const string _SongTitle = "SongTitle";
         private const string _StaticWarningMics = "StaticWarningMics";
         private const string _TextWarningProfiles = "TextWarningProfiles";
         private const string _StaticWarningProfiles = "StaticWarningProfiles";
@@ -592,6 +593,9 @@ namespace Vocaluxe.Screens
             _NameSelections[_NameSelection].Init();
             _LoadProfiles();
             _SelectElement(_Buttons[_ButtonStart]);
+
+            CSong firstSong = CGame.GetSong(0);
+            _Texts[_SongTitle].Text = firstSong.Artist.ToString() + " - " + firstSong.Title.ToString();
         }
 
         public override void OnClose()
@@ -648,6 +652,12 @@ namespace Vocaluxe.Screens
 
         private void _StartSong()
         {
+            // Verify there are actually selected songs!
+            if(CGame.GetNumSongs() == 0)
+            {
+                return;
+            }
+
             // Hier start de song effectief!
             if (CGame.GetNumSongs() == 1 && CGame.GetSong(0).IsDuet)
             {

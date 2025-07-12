@@ -129,7 +129,7 @@ namespace VocaluxeLib.Songs
         public string TitleSorting = String.Empty;
         public string ArtistSorting = String.Empty;
 
-        public string MidiNote = "";
+        public int MidiNote = -1;
 
         public string Creator = "";
         public string Version = "";

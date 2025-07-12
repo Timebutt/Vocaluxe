@@ -26,6 +26,9 @@ using Vocaluxe.SongQueue;
 using VocaluxeLib;
 using VocaluxeLib.Game;
 using VocaluxeLib.Songs;
+using NAudio.Midi;
+using Vocaluxe.Lib.Midi;
+using System.Linq;
 
 namespace Vocaluxe.Base
 {
@@ -92,6 +95,9 @@ namespace Vocaluxe.Base
             _SongQueue.Init();
             Players = new SPlayer[CSettings.MaxNumPlayer];
             ResetPlayer();
+
+            CMidiInterface.MidiIn.MessageReceived += MidiIn_MessageReceived;
+            CMidiInterface.MidiIn.Start();
         }
 
         public static EGameMode GameMode
@@ -127,6 +133,36 @@ namespace Vocaluxe.Base
         public static void Reset()
         {
             _SongQueue.Reset();
+        }
+
+        // This functions listens to MIDI and prepares a Song if the right condition is met
+        // Received MIDI should be on Channel 5
+        // Received MIDI note number should result in a found Song!
+        private static void MidiIn_MessageReceived(object sender, MidiInMessageEventArgs e)
+        {
+            var midiEvent = e.MidiEvent;
+            if (midiEvent.CommandCode == MidiCommandCode.NoteOn)
+            {
+                var noteEvent = (NoteEvent)midiEvent;
+                if(noteEvent.Channel != 5) {
+                    return;
+                }
+
+                int songIndex = CSongs.AllSongs.ToList().FindIndex(song => song.MidiNote == noteEvent.NoteNumber);
+                if (songIndex != -1)
+                {
+                    Reset();
+                    ClearSongs();
+
+                    var song = CSongs.AllSongs.First(s => s.MidiNote == noteEvent.NoteNumber);
+                    if (AddSong(songIndex, song.AvailableGameModes[0])) {
+                        Console.WriteLine("Song selected!");
+                        CGraphics.FadeTo(EScreen.Names);
+                    } else {
+                        Console.WriteLine("Song was not added for some reason!");
+                    }
+                }   
+            }
         }
 
 // Dit lijkt wel de start ofzo te zijn

@@ -135,8 +135,7 @@ namespace Vocaluxe.SongQueue
                 try
                 {
                     // Send the song specific note (if there is one!)
-                    int midiNote = Int32.Parse(_CurrentSong.MidiNote);
-                    CMidiInterface.sendMidiNote(midiNote);
+                    CMidiInterface.sendMidiNote(_CurrentSong.MidiNote);
                 } catch {}
             }
         }
