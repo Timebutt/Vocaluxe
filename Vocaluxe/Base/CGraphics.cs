@@ -314,6 +314,13 @@ namespace Vocaluxe.Base
 
         public static void FadeTo(IMenu screen)
         {
+            // This scenario happens when switching songs while on the ScreenNames for instance!
+            if (screen == CurrentScreen)
+            {
+                CurrentScreen.OnShow();
+                return;
+            }
+
             if (screen == null)
                 throw new ArgumentNullException("screen");
             Debug.Assert(NextScreen == null || NextScreen != screen, "Don't fade to currently fading screen!");

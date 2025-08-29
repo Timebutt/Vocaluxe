@@ -65,7 +65,6 @@ tx.exe
 /TestResults
 /VocaluxeTests/bin
 /Output/libs
-/Output/Themes/*.mp4
 /packages
 /Output/x64
 /Output/x86

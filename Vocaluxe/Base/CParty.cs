@@ -168,9 +168,9 @@ namespace Vocaluxe.Base
             _CurrentPartyMode.SongSelected(songID);
         }
 
-        public static void FinishedSinging()
+        public static void FinishedSinging(bool abortedSong = false)
         {
-            _CurrentPartyMode.FinishedSinging();
+            _CurrentPartyMode.FinishedSinging(abortedSong);
         }
 
         public static void LeavingScore()

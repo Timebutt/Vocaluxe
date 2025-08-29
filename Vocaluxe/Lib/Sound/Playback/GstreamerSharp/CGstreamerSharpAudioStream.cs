@@ -21,6 +21,7 @@ using Gst;
 using Vocaluxe.Base;
 using VocaluxeLib;
 using VocaluxeLib.Log;
+using Vocaluxe.Lib.Midi;
 
 namespace Vocaluxe.Lib.Sound.Playback.GstreamerSharp
 {
@@ -268,7 +269,7 @@ namespace Vocaluxe.Lib.Sound.Playback.GstreamerSharp
         public override void Play()
         {
             if (_Element != null)
-                _Element.SetState(State.Playing);
+                _Element.SetState(State.Playing);            
         }
 
         public override void Stop()

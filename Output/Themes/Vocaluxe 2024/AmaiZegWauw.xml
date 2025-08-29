@@ -2,8 +2,8 @@
 <root>
   <SkinSystemVersion>4</SkinSystemVersion>
   <Info>
-    <Name>Standard</Name>
-    <Author>Vocaluxe</Author>
+    <Name>Amai Zeg Wauw</Name>
+    <Author>Nils Tijtgat</Author>
     <VersionMajor>1</VersionMajor>
     <VersionMinor>0</VersionMinor>
   </Info>
@@ -15,9 +15,9 @@
       <A>1.000</A>
     </Player1>
     <Player2>
-      <R>0.819</R>
-      <G>0.000</G>
-      <B>0.000</B>
+      <R>0.882</R>
+      <G>0.149</G>
+      <B>0.110</B>
       <A>1.000</A>
     </Player2>
     <Player3>
@@ -93,16 +93,16 @@
       <A>0.300</A>
     </ButtonColor>
     <ButtonSelColor>
-      <R>1</R>
-      <G>0.2</G>
-      <B>0.2</B>
+      <R>0.990</R>
+      <G>0.990</G>
+      <B>0.990</B>
       <A>1.000</A>
     </ButtonSelColor>
     <ButtonTextColor>
-      <R>1</R>
-      <G>1</G>
-      <B>1</B>
-      <A>1</A>
+      <R>0.690</R>
+      <G>0.690</G>
+      <B>0.690</B>
+      <A>0.700</A>
     </ButtonTextColor>
     <ButtonTextSelColor>
       <R>0.890</R>
@@ -213,9 +213,9 @@
       <A>0.800</A>
     </LyricMainColor>
     <LyricSubColor>
-      <R>0.800</R>
-      <G>0.800</G>
-      <B>0.800</B>
+      <R>0.600</R>
+      <G>0.600</G>
+      <B>0.600</B>
       <A>0.700</A>
     </LyricSubColor>
     <LyricHelper>
@@ -394,7 +394,7 @@
     <CalibrationBG>CalibrationBG.png</CalibrationBG>
   </Skins>
   <Videos>
-    <BG_Video>BG_Video.mp4</BG_Video>
+    <BG_Video>BG_Video_2.mp4</BG_Video>
     <IntroIn>Introin.mp4</IntroIn>
     <IntroMid>IntroMid.mp4</IntroMid>
     <IntroOut>IntroOut.mp4</IntroOut>

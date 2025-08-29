@@ -15,12 +15,14 @@
 // along with Vocaluxe. If not, see <http://www.gnu.org/licenses/>.
 #endregion
 
+using System;
 using System.Collections.Generic;
 using Vocaluxe.Base;
 using Vocaluxe.GameModes;
 using VocaluxeLib;
 using VocaluxeLib.Game;
 using VocaluxeLib.Songs;
+using Vocaluxe.Lib.Midi;
 
 namespace Vocaluxe.SongQueue
 {
@@ -126,6 +128,16 @@ namespace Vocaluxe.SongQueue
             }
             _CurrentRound++;
             _CurrentSong = IsFinished() ? null : CGameModes.Get(GetCurrentGameMode()).GetSong(_SongQueue[_CurrentRound].SongID);
+
+
+            if(_CurrentSong != null)
+            {
+                try
+                {
+                    // Send the song specific note (if there is one!)
+                    CMidiInterface.sendMidiNote(_CurrentSong.MidiNote);
+                } catch {}
+            }
         }
 
         public bool IsFinished()

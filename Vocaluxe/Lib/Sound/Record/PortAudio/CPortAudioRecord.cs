@@ -147,8 +147,13 @@ namespace Vocaluxe.Lib.Sound.Record.PortAudio
             {
                 if (handle != IntPtr.Zero)
                 {
-                    PortAudioSharp.PortAudio.Pa_StopStream(handle);
-                    PortAudioSharp.PortAudio.Pa_CloseStream(handle);
+                    try
+                    {
+                        PortAudioSharp.PortAudio.Pa_StopStream(handle);
+                        PortAudioSharp.PortAudio.Pa_CloseStream(handle);
+                    }
+                    catch { }
+                    
                 }
             }
             _RecHandle = new IntPtr[_Devices.Count];

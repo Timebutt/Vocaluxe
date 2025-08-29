@@ -99,9 +99,13 @@ namespace VocaluxeLib.PartyModes
                 _ScreenSongOptions.Selection.NumJokers[teamNr]--;
         }
 
-        public virtual void FinishedSinging()
+        public virtual void FinishedSinging(bool songAborted = false)
         {
-            CBase.Graphics.FadeTo(EScreen.Score);
+            if(!songAborted) {
+                CBase.Graphics.FadeTo(EScreen.Score);
+            } else {
+                CBase.Graphics.FadeTo(EScreen.Song);
+            }
         }
 
         public virtual void LeavingScore()

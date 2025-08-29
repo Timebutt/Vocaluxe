@@ -119,6 +119,9 @@ namespace VocaluxeLib.Menu
         {
             _Text.Text = note.Text;
             _Text.Font.Style = (note.Type == ENoteType.Freestyle) ? EStyle.BoldItalic : EStyle.Bold;
+            // Height was 63 before!
+            // Change here to change the font size fontsize font height fontheight!
+            _Text.Font.Height = 120;
         }
 
         public void Clear()

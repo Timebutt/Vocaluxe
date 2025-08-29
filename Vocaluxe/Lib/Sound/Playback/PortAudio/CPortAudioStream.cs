@@ -196,6 +196,7 @@ namespace Vocaluxe.Lib.Sound.Playback.PortAudio
                     hostApiSpecificStreamInfo = IntPtr.Zero
                 };
 
+            // Hier wordt de outputstream aangemaakt!
             if (!_PaHandle.OpenOutputStream(
                 out _Stream,
                 ref outputParams,

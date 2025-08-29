@@ -22,6 +22,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Timers;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Vocaluxe.Base;
 using Vocaluxe.Base.Fonts;
@@ -33,6 +34,8 @@ using VocaluxeLib.Menu;
 using VocaluxeLib.Menu.SingNotes;
 using VocaluxeLib.PartyModes;
 using VocaluxeLib.Songs;
+using Vocaluxe.Lib.Midi;
+using NAudio.Midi;
 
 namespace Vocaluxe.Screens
 {
@@ -149,7 +152,9 @@ namespace Vocaluxe.Screens
 
         public override void Init()
         {
-            base.Init();
+            base.Init();            
+            
+            Console.WriteLine("EERSTE OUTPUT EVER!");
 
             var texts = new List<string> { _TextShortInfoTop, _TextSongName, _TextTime, _TextDuetName1, _TextDuetName2, _TextMedleyCountdown };
             _BuildTextStrings(texts);
@@ -195,6 +200,25 @@ namespace Vocaluxe.Screens
             _TimerShortInfoText = new System.Timers.Timer(5000);
             _TimerShortInfoText.AutoReset = false;
             _TimerShortInfoText.Elapsed += OnTimedEventShortInfoText;
+
+            // Listen for incoming MIDI messages
+            CMidiInterface.MidiIn.MessageReceived += MidiIn_MessageReceived;
+            CMidiInterface.MidiIn.Start();
+        }
+
+        private void MidiIn_MessageReceived(object sender, MidiInMessageEventArgs e)
+        {
+            var midiEvent = e.MidiEvent;
+            if (midiEvent.CommandCode == MidiCommandCode.NoteOn)
+            {
+                var noteEvent = (NoteEvent)midiEvent;
+                if(noteEvent.NoteNumber == 31)
+                {
+                    _TogglePause();
+                    _Stop();
+                }
+            }
+            
         }
 
         private void OnTimedEventShortInfoText(Object source, ElapsedEventArgs e)
@@ -408,7 +432,12 @@ namespace Vocaluxe.Screens
         #region screen-handling
         public override void OnShow()
         {
+            // ik denk da hier de loop is!
             base.OnShow();
+
+            // Send a MIDI note to indicate we are on the Sing screen
+            // waarschijnlijk nie nodig om da hier te sturen, wordt al gestuurd bij start van het nummer!
+            //CMidiInterface.sendStartNote();
 
             _InitiatePlayerStatics();
             _InitiatePlayerStrings();
@@ -1007,6 +1036,14 @@ namespace Vocaluxe.Screens
             CRecord.Start();
             if (_Webcam)
                 CWebcam.Start();
+
+            // Dit moet hier dus gefinetuned worden op de precieze audio setup!
+            Task.Delay(110).ContinueWith(async (t) =>
+            {
+                // Send a MIDI note to indicate we are on the Sing screen
+                // waarschijnlijk nie nodig om da hier te sturen, wordt al gestuurd bij start van het nummer!
+                CMidiInterface.sendStartNote();
+            });
         }
 
         /// <summary>
@@ -1023,16 +1060,19 @@ namespace Vocaluxe.Screens
                 CGame.ResetPlayer();
             }
 
-            _FinishedSinging();
+            _FinishedSinging(true);
         }
 
         /// <summary>
         /// Singing is finished, stop webcam and call PartyMode method.
         /// </summary>
-        private void _FinishedSinging()
+        private void _FinishedSinging(bool abortedSong = false)
         {
             _FadeOut = true;
-            CParty.FinishedSinging();
+            CParty.FinishedSinging(abortedSong);
+
+            // Send a MIDI note to indicate singing has stopped
+            CMidiInterface.sendStopNote();
 
             if (_Webcam)
                 CWebcam.Stop();
@@ -1089,8 +1129,15 @@ namespace Vocaluxe.Screens
                 CGame.ResetPlayer();
             }            
 
+            // This check should always have been here IMO
+            if (CGame.IsFinished())
+            {
+                _FinishedSinging();
+                return;
+            }
 
             _LoadCurrentSong();
+
 
             _StartSong();
         }
@@ -1122,8 +1169,11 @@ namespace Vocaluxe.Screens
 
             _Texts[_TextSongName].Visible = !_Pause;
 
-            if (_Pause)
+            if (_Pause) {
                 CSound.Pause(_CurrentStream);
+                CMidiInterface.sendPauseNote();
+            }
+                
             else
                 CSound.Play(_CurrentStream);
         }

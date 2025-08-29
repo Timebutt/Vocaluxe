@@ -24,6 +24,8 @@ using VocaluxeLib.Draw;
 using VocaluxeLib.Menu;
 using VocaluxeLib.Songs;
 using VocaluxeLib.Profile;
+using NAudio.Midi;
+using Vocaluxe.Lib.Midi;
 
 namespace Vocaluxe.Screens
 {
@@ -44,6 +46,7 @@ namespace Vocaluxe.Screens
         private const string _ButtonBack = "ButtonBack";
         private const string _ButtonStart = "ButtonStart";
         private const string _TextWarningMics = "TextWarningMics";
+        private const string _SongTitle = "SongTitle";
         private const string _StaticWarningMics = "StaticWarningMics";
         private const string _TextWarningProfiles = "TextWarningProfiles";
         private const string _StaticWarningProfiles = "StaticWarningProfiles";
@@ -111,6 +114,9 @@ namespace Vocaluxe.Screens
             _ChooseAvatarStatic.Aspect = EAspect.Crop;
 
             CProfiles.AddProfileChangedCallback(_OnProfileChanged);
+
+            CMidiInterface.MidiIn.MessageReceived += MidiIn_MessageReceived;
+            CMidiInterface.MidiIn.Start();
         }
 
         public override void LoadTheme(string xmlPath)
@@ -123,6 +129,20 @@ namespace Vocaluxe.Screens
                 _Statics[_StaticPlayerAvatar[i]].Aspect = EAspect.Crop;
             }
             _AddStatic(_ChooseAvatarStatic);
+        }
+
+        private void MidiIn_MessageReceived(object sender, MidiInMessageEventArgs e)
+        {
+            var midiEvent = e.MidiEvent;
+            if (midiEvent.CommandCode == MidiCommandCode.NoteOn)
+            {
+                var noteEvent = (NoteEvent)midiEvent;
+                if(noteEvent.NoteNumber == 30)
+                {
+                    _StartSong();
+                }
+            }
+            
         }
 
         public override bool HandleInput(SKeyEvent keyEvent)
@@ -573,6 +593,9 @@ namespace Vocaluxe.Screens
             _NameSelections[_NameSelection].Init();
             _LoadProfiles();
             _SelectElement(_Buttons[_ButtonStart]);
+
+            CSong firstSong = CGame.GetSong(0);
+            _Texts[_SongTitle].Text = firstSong.Artist.ToString() + " - " + firstSong.Title.ToString();
         }
 
         public override void OnClose()
@@ -629,12 +652,26 @@ namespace Vocaluxe.Screens
 
         private void _StartSong()
         {
+            // Verify there are actually selected songs!
+            if(CGame.GetNumSongs() == 0)
+            {
+                return;
+            }
+
+            // Hier start de song effectief!
             if (CGame.GetNumSongs() == 1 && CGame.GetSong(0).IsDuet)
             {
                 for (int i = 0; i < CGame.NumPlayers; i++)
                     CGame.Players[i].VoiceNr = _SelectSlides[_SelectSlideDuetPlayer[i]].Selection;
             }
             CGraphics.FadeTo(EScreen.Sing);
+            
+            // try
+            // {
+            //     // Send the song specific note (if there is one!)
+            //     int midiNote = Int32.Parse(CGame.GetSong(0).MidiNote);
+            //     CMidiInterface.sendMidiNote(midiNote);
+            // } catch {}
         }
 
         private void _UpdateSlides()

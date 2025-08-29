@@ -880,9 +880,16 @@ namespace Vocaluxe.Lib.Draw
                     if (_Textures.TryGetValue(textureRef.ID, out t))
                     {
                         _DisposeTexture(t);
-                        _Textures.Remove(textureRef.ID);
+                        if(textureRef != null)
+                        {
+                            _Textures.Remove(textureRef.ID);
+                        }
+                        
                     }
-                    textureRef.SetRemoved();
+                    if(textureRef != null)
+                    {
+                        textureRef.SetRemoved();
+                    }
                 }
             }
             textureRef = null;

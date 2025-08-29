@@ -153,6 +153,20 @@
       <Font>Outline</Font>
       <Text>TR_SCREENOGAME_HIGHSCORESTYLE</Text>
     </Text>
+    <Text Name="TextMidiInterface">
+      <X>75</X>
+      <Y>587</Y>
+      <Z>0</Z>
+      <H>27</H>
+      <MaxW>0</MaxW>
+      <Color Name="TextColor" />
+      <SelColor Name="TextSelColor" />
+      <Align>Left</Align>
+      <ResizeAlign>Center</ResizeAlign>
+      <Style>Bold</Style>
+      <Font>Outline</Font>
+      <Text>TR_SCREENOGAME_MIDI_INTERFACE</Text>
+    </Text>
   </Texts>
   <Buttons>
     <Button Name="ButtonExit">
